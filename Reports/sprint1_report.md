@@ -143,7 +143,6 @@ Réalisée dans `eda.ipynb` (sections 4 et 5). 4 familles de visualisations prod
 | `HighBP` | ~42% | ~67% | +25 pts |
 | `HeartDiseaseorAttack` | ~7% | ~17% | +10 pts |
 | `DiffWalk` | ~14% | ~31% | +17 pts |
-| `HvyAlcoholConsump` | ~8% | ~4% | -4 pts (facteur protecteur) |
 
 **BMI** (section 5.2) — histogramme superposé + boxplot par classe. Distribution clairement décalée vers des valeurs plus élevées chez les diabétiques.
 
