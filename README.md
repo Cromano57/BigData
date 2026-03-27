@@ -1,5 +1,6 @@
 # Projet BigData — Prédiction du Diabète
 **BOUDEMAGH Isrâ - FRAIOLI Enzo - RIECKENBERG Bruno - ROMANO Corentin**
+
 **FISE A4 INFO — Nancy**
 
 Prédiction du diabète à partir des données de santé BRFSS 2015 (CDC).  
