@@ -16,3 +16,5 @@ shap
 eli5
 mlflow
 optuna
+keras
+tensorflow
