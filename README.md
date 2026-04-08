@@ -23,84 +23,66 @@ Classification binaire : déterminer si un individu est diabétique ou non à pa
 
 ```
 BigData/
-├── data/
-│   ├── raw/
-│   │   └── diabetes_binary_5050split_health_indicators_BRFSS2015.csv
-│   └── processed/
+├── Data/
+│   ├── Raw/
+│   │   ├── diabetes_binary_5050split_health_indicators_BRFSS2015.csv
+│   │   ├── diabetes_binary_health_indicators_BRFSS2015.csv
+│   │   └── diabetes_012_health_indicators_BRFSS2015.csv
+│   └── Processed/
 │       ├── train.csv        # 64%
 │       ├── val.csv          # 16%
 │       ├── test.csv         # 20%
 │       └── scaler.joblib    # StandardScaler sérialisé
 │
-├── notebooks/
-│   └── eda.ipynb            # EDA complète
+├── Notebooks/
+│   ├── eda.ipynb            # Analyse exploratoire des données
+│   └── modeling.ipynb       # Entraînement et évaluation du réseau de neurones
 │
-├── src/
-│   └── preprocessing.py     # Pipeline de prétraitement
+├── Src/
+│   ├── preprocessing.py     # Pipeline de prétraitement
+│   ├── train.py             # Entraînement du modèle
+│   └── evaluate.py          # Évaluation des modèles
 │
-└── reports/
-    └── sprint1_report.md
+├── models/
+│   ├── nn_best.keras        # Meilleur modèle sauvegardé
+│   ├── final_256-128_lr1e-3.keras
+│   └── history.json         # Historique d'entraînement
+│
+├── Reports/
+│   ├── sprint1_report.md
+│   └── sprint2_report.md
+│
+├── mlruns/                  # Tracking MLflow
+└── requirements.txt
 ```
 
 ---
 
 ## Installation
 
+**1. Créer un environnement virtuel**
 ```bash
-pip install scikit-learn pandas numpy matplotlib seaborn joblib
+python -m venv venv
+source venv/bin/activate        # Linux / macOS
+venv\Scripts\activate           # Windows
+```
+
+**2. Installer les dépendances**
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
 ## Utilisation
 
-**1. Prétraitement** — génère train / val / test dans `data/processed/`
+**Notebooks** — ouvrir et exécuter les notebooks dans le dossier `Notebooks/`
 ```bash
-python src/preprocessing.py
+jupyter notebook Notebooks/
 ```
 
-**2. EDA** — ouvrir `notebooks/eda.ipynb` et exécuter toutes les cellules
-
----
-
-## Pipeline de prétraitement (`src/preprocessing.py`)
-
-| Étape | Fonction | Description |
-|---|---|---|
-| Chargement | `load_data()` | Lecture du CSV brut |
-| Validation | `validate()` | Suppression doublons, vérification BMI |
-| Feature engineering | `engineer_features()` | Création de 4 nouvelles variables |
-| Split | `split_data()` | 64% train / 16% val / 20% test stratifié |
-| Normalisation | `scale_continuous()` | StandardScaler sur les variables continues |
-| Sauvegarde | `save()` | Export CSV + scaler.joblib |
-
-**Features engineered :**
-
-| Feature | Définition |
-|---|---|
-| `Obese` | BMI ≥ 30 |
-| `CardioRisk` | HighBP + HighChol + HeartDiseaseorAttack + Stroke (0–4) |
-| `UnhealthyLifestyle` | Pas d'activité + Smoker + HvyAlcoholConsump (0–3) |
-| `PoorHealth` | MentHlth > 14 OU PhysHlth > 14 jours |
-
----
-
-## Résultats EDA
-
-- **1 635 doublons** supprimés (2.3%)
-- **Aucune valeur manquante**
-- **Classes équilibrées** : 50% / 50%
-- **25 features** après engineering
-
-**Top 5 features prédictives (Random Forest + Pearson) :**
-
-| Feature | Importance (Gini) | Corrélation \|r\| |
-|---|---|---|
-| `HighBP` | 0.2417 | 0.382 |
-| `GenHlth` | 0.2404 | 0.408 |
-| `BMI` | 0.1300 | 0.293 |
-| `HighChol` | 0.1038 | 0.289 |
-| `Age` | 0.0855 | 0.279 |
+- `eda.ipynb` — analyse exploratoire des données
+- `modeling.ipynb` — entraînement et évaluation du réseau de neurones
 
 ---
 
