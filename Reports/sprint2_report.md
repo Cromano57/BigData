@@ -1,6 +1,6 @@
 # Sprint 2 — Rapport intermédiaire
 **Projet :** Prédiction du diabète — BRFSS 2015  
-**Date :** 2026-03-16  
+**Date :** 2026-04-8  
 **Framework :** TensorFlow / Keras  |  **Tracking :** MLflow
 
 ---
@@ -78,17 +78,20 @@ Dense(1, Sigmoid)
 
 ---
 
-## 5. Résultats attendus
+## 5. Résultats obtenus
 
-*(À compléter après exécution de `notebooks/modeling.ipynb`)*
+*Résultats issus de l'exécution de `notebooks/modeling.ipynb` — jeu de test (13 812 exemples)*
 
-| Métrique | Seuil 0.5 | Seuil optimal |
+| Métrique | Seuil 0.5 | Seuil optimal (0.45) |
 |---|---|---|
-| Accuracy | — | — |
-| AUC-ROC | — | — |
-| F1-score | — | — |
-| Précision | — | — |
-| Rappel | — | — |
+| Accuracy | 0.75 | 0.75 |
+| AUC-ROC | 0.8234 | 0.8234 |
+| F1-score (diabétique) | 0.77 | **0.7760** |
+| Précision (diabétique) | 0.72 | 0.71 |
+| Rappel (diabétique) | 0.83 | **0.86** |
+
+**Matrice de confusion (seuil optimal 0.45) :** TP=6047 · FP=2519 · TN=4273 · FN=973  
+Sensibilité = 0.8614 · Spécificité = 0.6291
 
 ---
 
