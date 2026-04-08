@@ -95,7 +95,7 @@ Dense(1, Sigmoid)
 ## 6. Analyse du seuil de décision
 
 Le seuil par défaut (0.5) n'est pas nécessairement optimal pour un problème médical.  
-Dans ce contexte (dépistage du diabète), **minimiser les faux négatifs** (FN) est prioritaire — un diabétique non détecté est plus coûteux qu'un faux positif.
+Dans ce contexte (dépistage du diabète), **minimiser les faux négatifs** (FN) est prioritaire, un diabétique non détecté est plus coûteux qu'un faux positif.
 
 **Méthode :** scan du seuil de 0.05 à 0.95 et maximisation du F1-score.  
 Le seuil optimal est reporté dans MLflow pour comparaison entre runs.
