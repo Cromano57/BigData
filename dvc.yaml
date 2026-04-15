@@ -1,0 +1,45 @@
+stages:
+  preprocess_balanced:
+    cmd: python Src/preprocessing.py
+    deps:
+      - Src/preprocessing.py
+      - Data/Raw/diabetes_binary_5050split_health_indicators_BRFSS2015.csv.dvc
+    outs:
+      - Data/Processed/train.csv
+      - Data/Processed/val.csv
+      - Data/Processed/test.csv
+      - Data/Processed/scaler.joblib
+
+  preprocess_imbalanced:
+    cmd: python Src/preprocess_imbalanced.py
+    deps:
+      - Src/preprocess_imbalanced.py
+      - Data/Raw/diabetes_binary_health_indicators_BRFSS2015.csv.dvc
+    outs:
+      - Data/Processed/imbalanced/train.csv
+      - Data/Processed/imbalanced/val.csv
+      - Data/Processed/imbalanced/test.csv
+      - Data/Processed/imbalanced/scaler.joblib
+
+  train_advanced:
+    cmd: python Src/train_advanced.py --arch all --imbalance none --epochs 50
+    deps:
+      - Src/train_advanced.py
+      - Data/Processed/train.csv
+      - Data/Processed/val.csv
+      - Data/Processed/test.csv
+    outs:
+      - models/baseline_best.keras
+      - models/deep_256_128_64_best.keras
+      - models/residual_128_64_best.keras
+      - Reports/sprint3_results.json
+
+  explain:
+    cmd: python Src/explainability.py --n_shap 300
+    deps:
+      - Src/explainability.py
+      - Data/Processed/train.csv
+      - Data/Processed/test.csv
+    outs:
+      - Reports/shap_summary.png
+      - Reports/shap_beeswarm.png
