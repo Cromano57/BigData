@@ -1,0 +1,5 @@
+outs:
+- md5: a4eacbf9582e777cd4cec479bced6d87
+  size: 6347570
+  hash: md5
+  path: diabetes_binary_5050split_health_indicators_BRFSS2015.csv
