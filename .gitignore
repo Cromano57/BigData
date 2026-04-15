@@ -2,3 +2,16 @@ venv/
 mlruns/
 *.db
 models/
+
+# Données générées (recréées par les scripts)
+Data/Processed/
+
+# Artefacts générés (recréés par les scripts)
+Reports/*.png
+Reports/emissions.csv
+Reports/sprint3_results.json
+Reports/framework_comparison.json
+
+# Python cache
+__pycache__/
+*.pyc
