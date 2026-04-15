@@ -18,3 +18,7 @@ mlflow
 optuna
 keras
 tensorflow
+imblearn
+lime
+codecarbon
+dvc
