@@ -1,0 +1,27 @@
+{
+  "best_trial": {
+    "architecture": "residual",
+    "learning_rate": 0.0016967533607196547,
+    "l2_lambda": 4.335281794951567e-06,
+    "patience": 5,
+    "batch_size": 512
+  },
+  "best_value": 0.775,
+  "threshold": 0.3499999999999999,
+  "test_metrics": {
+    "accuracy": 0.7323,
+    "auc_roc": 0.8196,
+    "f1": 0.7734,
+    "precision": 0.6786,
+    "recall": 0.8991,
+    "threshold": 0.35,
+    "val_f1": 0.7724,
+    "val_precision": 0.6761,
+    "val_recall": 0.9006,
+    "n_epochs": 17,
+    "architecture": "residual",
+    "learning_rate": 0.0016967533607196547,
+    "l2_lambda": 4.335281794951567e-06,
+    "batch_size": 512
+  }
+}
